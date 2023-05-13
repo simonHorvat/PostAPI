@@ -11,7 +11,7 @@ To run the API using Docker, follow these steps:
 3. Navigate to the root directory of the project in your terminal or command prompt.
 4. Build the Docker image by running the following command: ```docker build -t post-api .```
 5. Run the Docker container by running the following command: ```docker run -p 8000:8000 post-api```
-6. The API should now be running on http://localhost:8000/.
+6. The API should now be running on http://localhost:8000/. Swagger documentation is available on http://localhost:8000/docs.
 
 ## Running without Docker
 To run the API without using Docker, follow these steps:
@@ -20,7 +20,7 @@ To run the API without using Docker, follow these steps:
 2. Navigate to the root directory of the project in your terminal or command prompt.
 3. Install the required dependencies by running the following command: ```pip install -r requirements.txt```
 4. Start the API by running the following command: ```python run.py```
-The API should now be running on http://localhost:8000/.
+The API should now be running on http://localhost:8000/. Swagger documentation is available on http://localhost:8000/docs.
 
 ## Project Structure
 
