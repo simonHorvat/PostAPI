@@ -1,11 +1,8 @@
-
-from fastapi import FastAPI
 import uvicorn
+from app.main import app
 from database.database import Base, engine
 from database.load_data import load_toy_data
 
-
-app = FastAPI()
 
 @app.on_event("startup")
 async def startup_event():
