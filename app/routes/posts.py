@@ -110,15 +110,14 @@ async def create(post: PostSchema, db: Session = Depends(get_db)) -> PostSchema:
         new_post = PostModel(userId=post.userId, title=post.title, body=post.body)
         db.add(new_post)
         db.commit()
-        return PostSchema.from_orm(new_post)
+        logger.info(f"Post with id={new_post.id} created")
+        return PostSchema.from_orm(new_post)# important to call after commit so I can return post with assigned id
 
     except HTTPException as e:
-        db.rollback()
         logger.error(str(e))
         raise e
     except Exception as e:
         logger.exception(f"An error occurred while processing request to create a new post: {str(e)}")
-        db.rollback()
         raise e
 
 
@@ -154,7 +153,7 @@ async def delete(id: int, db: Session = Depends(get_db)) -> InfoMessage:
         raise e
 
 
-@router.put("/edit/{id}", description=EDIT_POST_DESC)
+@router.patch("/edit/{id}", description=EDIT_POST_DESC)
 async def edit(id: int, title: Optional[str] = None, body: Optional[str] = None, db: Session = Depends(get_db)) -> PostSchema:
     try: 
         # Check if the post id is a valid positive integer
@@ -179,16 +178,15 @@ async def edit(id: int, title: Optional[str] = None, body: Optional[str] = None,
             logger.info(f"Post body updated: {id}")
 
         # Convert the updated post to a PostSchema object, commit the changes to the database and return edited post
+        new_post = PostSchema.from_orm(post)
         db.commit()
         logger.info(f"Post updated: {id}")
         
-        return PostSchema.from_orm(post)
+        return new_post
     
     except HTTPException as e:
-        db.rollback()
         logger.error(str(e))
         raise e    
     except Exception as e:
-        db.rollback()
         logger.exception(f"An error occurred while processing request to edit a post: {str(e)}")
         raise e
