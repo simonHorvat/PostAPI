@@ -1,6 +1,6 @@
 # PostAPI
 
-PostAPI is a web service created using FastAPI, which enables users to perform CRUD (Create, Read, Update, and Delete) operations on blog posts. It employs SQLAlchemy as an Object-Relational Mapping (ORM) tool to facilitate interaction with a SQLite database.
+PostAPI is a web service built with FastAPI that allows users to perform CRUD (Create, Read, Update, and Delete) operations on blog posts. The service utilizes SQLAlchemy as an ORM tool to enable interaction with a SQLite database. At the start of the application, the database is initialized with toy data (`@app.on_event("startup")` event in run.py).
 
 ## Running the API with Docker
 
