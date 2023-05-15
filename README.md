@@ -27,10 +27,11 @@ The API should now be running on http://localhost:8000/. Swagger documentation i
 The project has the following structure:
 ```
 PostAPI
-│   config.ini
+│   run.py
+|   config.ini
 │   Dockerfile
 │   requirements.txt
-│   run.py
+│   exceptions.py
 │
 ├───app
 │   │   main.py
