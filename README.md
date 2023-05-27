@@ -31,13 +31,13 @@ PostAPI
 |   config.ini
 │   Dockerfile
 │   requirements.txt
-│   exceptions.py
-│
+│  
 ├───app
 │   │   main.py
 │   │   utils.py
 │   │   __init__.py
-│   │
+│   │   exceptions.py
+│   │    
 │   └───routes
 │           posts.py
 │
